@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 # Create your views here.
+
+# Global dictionary for the month:message pairs
 challenge = {
     "january": "january message...",
     "february": "february message...",
