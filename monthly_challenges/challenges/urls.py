@@ -11,7 +11,7 @@ urlpatterns = [
     # for dynamic urls, the variables are marked with <> in the pattern, these
     # are passed to the matching view as kwarg
 
-    # patterns are checked in order: if the int conversion can be done by_number
+    # patterns are checked in order: if the int (positive integer only) conversion can be done by_number
     # else it is a str
     path("<int:month>", views.monthly_challenge_by_number),
     path("<str:month>", views.monthly_challenge),
