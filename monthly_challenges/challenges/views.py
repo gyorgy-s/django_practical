@@ -48,3 +48,8 @@ def monthly_challenge(request, month: str):
         return HttpResponseNotFound("Month not supported.")
 
     return HttpResponse(message)
+
+
+def monthly_challenge_by_number(request, month: int):
+    """Displayse the number entered in the url."""
+    return HttpResponse(month)
