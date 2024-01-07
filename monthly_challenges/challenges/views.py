@@ -29,18 +29,18 @@ def monthly_challenge(request, month: str):
         HttpResponse: basic str message for the month
     """
     challenge = {
-        "january": "january",
-        "february": "february",
-        "march": "march",
-        "april": "april",
-        "may": "may",
-        "june": "june",
-        "july": "july",
-        "august": "august",
-        "september": "september",
-        "october": "october",
-        "november": "november",
-        "december": "december",
+        "january": "january message...",
+        "february": "february message...",
+        "march": "march message...",
+        "april": "april message...",
+        "may": "may message...",
+        "june": "june message...",
+        "july": "july message...",
+        "august": "august message...",
+        "september": "september message...",
+        "october": "october message...",
+        "november": "november message...",
+        "december": "december message...",
     }
     try:
         message = challenge[month.lower()]
