@@ -10,5 +10,5 @@ from . import views
 urlpatterns = [
     # for dynamic urls, the variables are marked with <> in the pattern, these
     # are passed to the matching view as kwarg
-    path("<month>", views.monthly_challenge),
+    path("<str:month>", views.monthly_challenge),
 ]

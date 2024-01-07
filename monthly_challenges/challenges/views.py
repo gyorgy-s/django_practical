@@ -18,7 +18,7 @@ def february(request):
 
 
 # kwarg is passed from the urls route variable
-def monthly_challenge(request, month):
+def monthly_challenge(request, month: str):
     """Displays the message depending on the month, month passed from the url.
 
     Args:
@@ -43,7 +43,7 @@ def monthly_challenge(request, month):
         "december": "december",
     }
     try:
-        message = challenge[month]
+        message = challenge[month.lower()]
     except KeyError:
         return HttpResponseNotFound("Month not supported.")
 
