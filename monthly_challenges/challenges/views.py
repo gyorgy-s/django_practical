@@ -2,9 +2,24 @@
 views here will be called according to the urls.py of this app."""
 
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 # Create your views here.
+challenge = {
+    "january": "january message...",
+    "february": "february message...",
+    "march": "march message...",
+    "april": "april message...",
+    "may": "may message...",
+    "june": "june message...",
+    "july": "july message...",
+    "august": "august message...",
+    "september": "september message...",
+    "october": "october message...",
+    "november": "november message...",
+    "december": "december message...",
+}
+
 
 # "request" is the base kwarg that is automatically is passed from the url
 def january(request):
@@ -28,20 +43,6 @@ def monthly_challenge(request, month: str):
     Returns:
         HttpResponse: basic str message for the month
     """
-    challenge = {
-        "january": "january message...",
-        "february": "february message...",
-        "march": "march message...",
-        "april": "april message...",
-        "may": "may message...",
-        "june": "june message...",
-        "july": "july message...",
-        "august": "august message...",
-        "september": "september message...",
-        "october": "october message...",
-        "november": "november message...",
-        "december": "december message...",
-    }
     try:
         message = challenge[month.lower()]
     except KeyError:
@@ -51,5 +52,9 @@ def monthly_challenge(request, month: str):
 
 
 def monthly_challenge_by_number(request, month: int):
-    """Displayse the number entered in the url."""
-    return HttpResponse(month)
+    """Redirects to the matching month's monthly_challenge (in str) view."""
+    try:
+        month_as_str = list(challenge.keys())[month - 1]
+    except IndexError:
+        return HttpResponseNotFound(f"Month not supported: {month}")
+    return HttpResponseRedirect("/challenges/" + month_as_str)
