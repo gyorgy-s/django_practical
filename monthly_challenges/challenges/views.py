@@ -3,6 +3,7 @@ views here will be called according to the urls.py of this app."""
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 
@@ -59,4 +60,4 @@ def monthly_challenge_by_number(request, month: int):
         month_as_str = list(challenge.keys())[month - 1]
     except IndexError:
         return HttpResponseNotFound(f"Month not supported: {month}")
-    return HttpResponseRedirect("/challenges/" + month_as_str)
+    return HttpResponseRedirect(reverse("month_str", args=[month_as_str]))  # reverse constructs full url, by name set in urls.py

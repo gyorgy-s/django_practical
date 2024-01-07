@@ -13,6 +13,6 @@ urlpatterns = [
 
     # patterns are checked in order: if the int (positive integer only) conversion can be done by_number
     # else it is a str
-    path("<int:month>", views.monthly_challenge_by_number),
-    path("<str:month>", views.monthly_challenge),
+    path("<int:month>", views.monthly_challenge_by_number, name="month_int"),
+    path("<str:month>", views.monthly_challenge, name="month_str"),
 ]
