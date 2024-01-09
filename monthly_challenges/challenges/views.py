@@ -4,6 +4,7 @@ views here will be called according to the urls.py of this app."""
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -58,11 +59,13 @@ def monthly_challenge(request, month: str):
         HttpResponse: basic str message for the month
     """
     try:
-        message = challenge[month.lower()]
+        challenge_text = challenge[month.lower()]
+        # explicit folder made to diferentiate between templates of a multi app progects
+        response_data = render_to_string("challenges/challenge.html")
     except KeyError:
         return HttpResponseNotFound("Month not supported.")
 
-    return HttpResponse(message)
+    return HttpResponse(response_data)
 
 
 def monthly_challenge_by_number(request, month: int):
