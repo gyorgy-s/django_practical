@@ -60,12 +60,12 @@ def monthly_challenge(request, month: str):
     """
     try:
         challenge_text = challenge[month.lower()]
-        # explicit folder made to diferentiate between templates of a multi app progects
-        response_data = render_to_string("challenges/challenge.html")
     except KeyError:
         return HttpResponseNotFound("Month not supported.")
 
-    return HttpResponse(response_data)
+    # explicit folder made to diferentiate between templates of a multi app progects
+    # using render to return the template directly instead of the two step render_to_string solution
+    return render(request, "challenges/challenge.html")
 
 
 def monthly_challenge_by_number(request, month: int):
