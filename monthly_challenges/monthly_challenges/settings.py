@@ -57,6 +57,13 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # BASE_DIR / 'challenges' / 'templates' # for external templates etc. for app specific templates use installed apps.
+
+            # Add the templates folder in root to the templates.
+            # This way there is no need to specify the full path in other templates or apps to for example inherit
+            # from these templates. These will be available globally.
+            # (Django handles all the templates as one collection, that's why app specific temolates are placed in a
+            # dedicated folder within the app named after the app itself.)
+            BASE_DIR / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
