@@ -26,14 +26,11 @@ challenge = {
 
 
 def home(request):
-    list_items = ""
     months = list(challenge.keys())
 
-    for month in months:
-        list_items += f"<li><a href='{reverse('month_str', args=[month])}'>{month.capitalize()}</a></li>"
-
-    response_data = f"<ul>{list_items}</ul>"
-    return HttpResponse(response_data)
+    return render(request, "challenges/index.html", {
+        "months": months,
+    })
 
 
 # "request" is the base kwarg that is automatically is passed from the url
