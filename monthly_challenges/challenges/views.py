@@ -21,7 +21,7 @@ challenge = {
     "september": "september message...",
     "october": "october message...",
     "november": "november message...",
-    "december": "december message...",
+    "december": None,
 }
 
 
