@@ -65,7 +65,10 @@ def monthly_challenge(request, month: str):
 
     # explicit folder made to diferentiate between templates of a multi app progects
     # using render to return the template directly instead of the two step render_to_string solution
-    return render(request, "challenges/challenge.html")
+    return render(request, "challenges/challenge.html",  {
+        "text": challenge_text,
+        "month": month,
+    })
 
 
 def monthly_challenge_by_number(request, month: int):
