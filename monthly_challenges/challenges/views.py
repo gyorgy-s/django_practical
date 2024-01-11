@@ -2,9 +2,8 @@
 views here will be called according to the urls.py of this app."""
 
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse
-from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -58,7 +57,7 @@ def monthly_challenge(request, month: str):
     try:
         challenge_text = challenge[month.lower()]
     except KeyError:
-        return HttpResponseNotFound("Month not supported.")
+        raise Http404()  # automatically looks for 404.html in the templates
 
     # explicit folder made to diferentiate between templates of a multi app progects
     # using render to return the template directly instead of the two step render_to_string solution
@@ -73,5 +72,5 @@ def monthly_challenge_by_number(request, month: int):
     try:
         month_as_str = list(challenge.keys())[month - 1]
     except IndexError:
-        return HttpResponseNotFound(f"Month not supported: {month}")
+        raise Http404()
     return HttpResponseRedirect(reverse("month_str", args=[month_as_str]))  # reverse constructs full url, by name set in urls.py
