@@ -1,0 +1,12 @@
+/* Base project wide css file, applying to all the apps */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Libre+Baskerville&display=swap');
+
+html {
+    font-family: 'Fira Mono';
+    background-color: rgb(35, 38, 48);
+}
+
+body {
+    margin: 0;
+}
